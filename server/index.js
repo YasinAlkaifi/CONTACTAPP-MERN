@@ -52,7 +52,19 @@ app.delete("/delete/:id",(req,res)=>{
         }
     });
 });
+//UPDATE API
+app.get("/get/:id",(req,res)=>{
 
+    const {id}=req.params;
+    const sqlSelect="SELECT * FROM contact_tb WHERE ID=?";
+    db.query(sqlSelect,id,(error,result)=>{
+        if(error)
+        {
+            console.log("Get Error:",error);
+        }
+        res.send(result); 
+    });
+});
 
 
 
