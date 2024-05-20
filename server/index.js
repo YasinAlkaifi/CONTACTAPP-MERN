@@ -65,6 +65,20 @@ app.get("/get/:id",(req,res)=>{
         res.send(result); 
     });
 });
+app.put("/put/:id",(req,res)=>{
+
+    const {id}=req.params;
+    const {Name,Email,contact}=req.body;
+    const sqlUpdate="UPDATE contact_tb SET Name = ? , Email = ? , contact = ? WHERE ID=?";
+    db.query(sqlUpdate,[Name,Email,contact,id],(error,result)=>{
+        if(error)
+        {
+            console.log("Updation Error:",error);
+        }
+        res.send(result); 
+    });
+});
+//
 
 
 
